@@ -2,6 +2,7 @@ import gradio as gr
 from gradio_litmodel3d import LitModel3D
 
 import os
+os.environ['ATTN_BACKEND'] = 'xformers'   # Can be 'flash-attn' or 'xformers', default is 'flash-attn'
 import shutil
 from typing import *
 import torch
