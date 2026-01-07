@@ -1,0 +1,80 @@
+git clone --recurse-submodules https://github.com/microsoft/TRELLIS.git
+cd TRELLIScd
+conda create -n trellis_standalone python=3.10
+conda activate trellis 
+conda install pytorch==2.4.0 torchvision==0.19.0 pytorch-cuda=11.8 -c pytorch -c nvidia
+
+//pip install torch==2.5.1 torchvision --index-url=https://download.pytorch.org/whl/cu124
+pip install xformers==0.0.27.post2 --index-url https://download.pytorch.org/whl/cu118
+//pip install pillow imageio imageio-ffmpeg tqdm easydict opencv-python-headless scipy ninja rembg onnxruntime trimesh xatlas pyvista pymeshfix igraph transformers
+pip install pillow imageio imageio-ffmpeg tqdm easydict opencv-python-headless scipy ninja rembg onnxruntime trimesh open3d xatlas pyvista pymeshfix igraph transformers
+pip install git+https://github.com/EasternJournalist/utils3d.git@9a4eb15e4021b67b12c460c7057d642626897ec8
+//pip install https://github.com/bdashore3/flash-attention/releases/download/v2.7.1.post1/flash_attn-2.7.1.post1+cu124torch2.5.1cxx11abiFALSE-cp310-cp310-win_amd64.whl
+pip install kaolin -f https://nvidia-kaolin.s3.us-east-2.amazonaws.com/torch-2.4.0_cu121.html;
+
+git clone https://github.com/NVlabs/nvdiffrast.git ./tmp/extensions/nvdiffrast
+pip install ./tmp/extensions/nvdiffrast --no-build-isolation  
+
+git clone --recurse-submodules https://github.com/JeffreyXiang/diffoctreerast.git ./tmp/extensions/diffoctreerast
+pip install ./tmp/extensions/diffoctreerast --no-build-isolation   
+
+git clone https://github.com/autonomousvision/mip-splatting.git ./tmp/extensions/mip-splatting
+pip install ./tmp/extensions/mip-splatting/submodules/diff-gaussian-rasterization/ --no-build-isolation  
+
+cp -r ./extensions/vox2seq ./tmp/extensions/vox2seq
+pip install ./tmp/extensions/vox2seq
+
+pip install spconv-cu118
+pip install gradio==4.44.1 gradio_litmodel3d==0.0.1
+
+set ATTN_BACKEND=flash-attn
+set SPCONV_ALGO=native
+python ./app.py
+
+
+
+
+conda create -n trellis_standalone python=3.10 -y
+conda activate trellis_standalone
+conda install pytorch==2.5.0 torchvision==0.20.0 pytorch-cuda=12.4 -c pytorch -c nvidia -y
+pip install pillow imageio imageio-ffmpeg tqdm easydict opencv-python-headless scipy ninja rembg onnxruntime trimesh xatlas pyvista pymeshfix igraph transformers
+pip install git+https://github.com/EasternJournalist/utils3d.git@9a4eb15e4021b67b12c460c7057d642626897ec8
+pip install xformers==0.0.28.post2 --index-url https://download.pytorch.org/whl/cu124
+
+# this will take 2hr+ to compile
+pip install flash-attn
+
+New-Item -ItemType Directory -Force -Path C:\tmp\extensions
+git clone --recurse-submodules https://github.com/JeffreyXiang/diffoctreerast.git C:\tmp\extensions\diffoctreerast
+pip install C:\tmp\extensions\diffoctreerast
+pip install spconv-cu120
+git clone https://github.com/autonomousvision/mip-splatting.git C:\tmp\extensions\mip-splatting
+pip install C:\tmp\extensions\mip-splatting\submodules\diff-gaussian-rasterization\
+pip install kaolin -f https://nvidia-kaolin.s3.us-east-2.amazonaws.com/torch-2.4.0_cu121.html
+git clone https://github.com/NVlabs/nvdiffrast.git C:\tmp\extensions\nvdiffrast
+pip install C:\tmp\extensions\nvdiffrast
+
+
+
+
+
+
+
+
+conda create -n trellis_standalone python=3.10 -y
+conda activate trellis_standalone
+conda install pytorch==2.5.0 torchvision==0.20.0 pytorch-cuda=12.4 -c pytorch -c nvidia -y
+pip install pillow imageio imageio-ffmpeg tqdm easydict opencv-python-headless scipy ninja rembg onnxruntime trimesh xatlas pyvista pymeshfix igraph transformers
+pip install git+https://github.com/EasternJournalist/utils3d.git@9a4eb15e4021b67b12c460c7057d642626897ec8
+pip install xformers==0.0.28.post2 --index-url https://download.pytorch.org/whl/cu124
+# this will take 2hr+ to compile
+//pip install flash-attn
+New-Item -ItemType Directory -Force -Path C:\tmp\extensions
+git clone --recurse-submodules https://github.com/JeffreyXiang/diffoctreerast.git C:\tmp\extensions\diffoctreerast
+pip install C:\tmp\extensions\diffoctreerast
+pip install spconv-cu120
+git clone https://github.com/autonomousvision/mip-splatting.git C:\tmp\extensions\mip-splatting
+pip install C:\tmp\extensions\mip-splatting\submodules\diff-gaussian-rasterization\
+pip install kaolin -f https://nvidia-kaolin.s3.us-east-2.amazonaws.com/torch-2.4.0_cu121.html
+git clone https://github.com/NVlabs/nvdiffrast.git C:\tmp\extensions\nvdiffrast
+pip install C:\tmp\extensions\nvdiffrast
